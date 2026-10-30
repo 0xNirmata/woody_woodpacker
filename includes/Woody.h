@@ -9,16 +9,21 @@
 
 typedef struct data_s {
 	Elf64_Ehdr *header;		// Only elf header part
+	Elf64_Phdr *pHeader;
 	void *map;				// the whole file mapped
 	int size;					// whole file size
+	unsigned char *encrypted;
 	int fd;
 } data_t;
 
 #ifdef DEBUG
 void print_elf_header(data_t *data);
-# define WOODY_DEBUG(d) print_elf_header(d)
+void print_program_header(data_t *data);
+# define WOODY_PRINT_ELF_HEADER(d) print_elf_header(d)
+# define WOODY_PRINT_PROGRAM_HEADER(d) print_program_header(d)
 #else
-# define WOODY_DEBUG(d) ((void)0)
+# define WOODY_PRINT_ELF_HEADER(d) ((void)0)
+# define WOODY_PRINT_PROGRAM_HEADER(d) ((void)0)
 #endif
 
 // ELF
@@ -28,6 +33,9 @@ void modify_header(data_t *data);
 void modify_segment(data_t *data);
 void modify_section(data_t *data);
 
+// CIPHER
+// void compress_data(data_t *data); // If bonus
+unsigned char *chacha_encrypt(data_t *data);
 
 // UTILS
 void cleanup(data_t *data);

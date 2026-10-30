@@ -1,3 +1,4 @@
+#include <elf.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -24,7 +25,12 @@ int main(int ac, char *av[]) {
 
 	validate_elf(av[1], &data);
 
-	WOODY_DEBUG(&data);
+	data.pHeader = (data.map + 64);
+
+	WOODY_PRINT_ELF_HEADER(&data);
+	WOODY_PRINT_PROGRAM_HEADER(&data);
+
+	printf("%ld\n", sizeof(Elf64_Phdr));
 
 	cleanup(&data);
 	return 0;

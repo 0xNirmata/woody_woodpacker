@@ -40,7 +40,7 @@ static int is_ELF64(Elf64_Ehdr *header) {
 	if (header->e_ident[EI_CLASS] != ELFCLASS64) {
 		return -1;
 	}
-	if (header->e_machine == EM_X86_64) {
+	if (header->e_machine == EM_386) {
 		return -1;
 	}
 	return 0;
