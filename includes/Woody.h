@@ -16,6 +16,25 @@ typedef struct data_s {
 	int fd;
 } data_t;
 
+/*
+**
+** program_s
+** Description :
+** 		used at the cipher phase to go through program header
+**		and find pt_load one's
+**
+** Parameters :
+** - program_hdr_number: total number of pheaders
+** - jump_size: steps size (56 for 64bits and 32 for 32bits)
+** - current_phdr_position: our current position in the program table
+**
+*/
+typedef struct program_position_s {
+	unsigned int jump_size;
+	unsigned int program_hdr_number;
+	unsigned int current_phdr_position;
+} program_position_t;
+
 #ifdef DEBUG
 void print_elf_header(data_t *data);
 void print_program_header(data_t *data);
