@@ -30,7 +30,7 @@ int main(int ac, char *av[]) {
 	WOODY_PRINT_ELF_HEADER(&data);
 	WOODY_PRINT_PROGRAM_HEADER(&data);
 
-	printf("%ld\n", sizeof(Elf64_Phdr));
+	chacha_encrypt(&data);
 
 	cleanup(&data);
 	return 0;
