@@ -12,7 +12,7 @@ NAME    := woody_woodpacker
 CC      := cc
 AS      := nasm
 
-CFLAGS  := -Wall -Wextra -Werror # -DDEBUG
+CFLAGS  := -Wall -Wextra -Werror -g3 # -DDEBUG
 CPPFLAGS:= -Iincludes
 ASFLAGS := -f elf64
 
