@@ -53,8 +53,7 @@ void modify_segment(data_t *data);
 void modify_section(data_t *data);
 
 // CIPHER
-// void compress_data(data_t *data); // If bonus
-unsigned char *chacha_encrypt(data_t *data);
+unsigned char *encryption(data_t *data);
 
 // UTILS
 void cleanup(data_t *data);

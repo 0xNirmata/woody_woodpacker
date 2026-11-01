@@ -40,7 +40,7 @@ static void fill_position(program_position_t *program, data_t *data) {
 	program->current_phdr_position = 0;
 }
 
-unsigned char *chacha_encrypt(data_t *data) {
+unsigned char *encryption(data_t *data) {
 	Elf64_Phdr *current = data->pHeader;
 	program_position_t position = {0};
 
@@ -49,7 +49,7 @@ unsigned char *chacha_encrypt(data_t *data) {
 	for (; position.current_phdr_position < position.program_hdr_number; position.current_phdr_position++) {
 		if (is_pt_load(current)) {
 			printf("It's an PT_LOAD\n");
-			// cipher with implementation of chacha
+			cipher(current, position.jump_size);
 		}
 		current = (Elf64_Phdr *)get_next_pheader(current, position);
 	}
