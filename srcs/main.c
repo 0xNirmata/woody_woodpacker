@@ -30,7 +30,7 @@ int main(int ac, char *av[]) {
 	WOODY_PRINT_ELF_HEADER(&data);
 	WOODY_PRINT_PROGRAM_HEADER(&data);
 
-	chacha_encrypt(&data);
+	// chacha_encrypt(&data);
 
 	cleanup(&data);
 	return 0;
