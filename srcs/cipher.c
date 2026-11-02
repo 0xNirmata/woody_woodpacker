@@ -49,7 +49,7 @@ unsigned char *encryption(data_t *data) {
 	for (; position.current_phdr_position < position.program_hdr_number; position.current_phdr_position++) {
 		if (is_pt_load(current)) {
 			printf("It's an PT_LOAD\n");
-			cipher(current, position.jump_size);
+			// cipher chacha20
 		}
 		current = (Elf64_Phdr *)get_next_pheader(current, position);
 	}

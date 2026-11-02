@@ -6,8 +6,7 @@ static uint32_t rotl32(uint32_t x, int offset)
 	return ((x << offset) | (x >> (32 - offset)));
 }
 
-void chacha20_qround(uint32_t *a, uint32_t *b,
-					uint32_t *c, uint32_t *d)
+void chacha20_qround(uint32_t *a, uint32_t *b, uint32_t *c, uint32_t *d)
 {
 	*a += *b;
 	*d ^= *a;
@@ -26,8 +25,10 @@ void chacha20_qround(uint32_t *a, uint32_t *b,
 	*b = rotl32(*b, 7);
 }
 
-#ifdef CHACHA_TEST
 
+
+
+#ifdef CHACHA_TEST
 #include <stdio.h>
 #include <unistd.h>
 
@@ -107,5 +108,4 @@ int main(void)
 	test_chacha20_qround_on_state();
 	return 0;
 }
-
 #endif
