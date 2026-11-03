@@ -4,6 +4,11 @@
 
 #include "Woody.h"
 
+void cleanup(data_t *data) {
+	munmap(data->map, data->size);
+	close(data->fd);
+}
+
 #ifdef DEBUG
 static const char* get_type_str(uint16_t type) {
     switch (type) {
@@ -115,8 +120,3 @@ void print_program_header(data_t *data) {
 # define WOODY_PRINT_ELF_HEADER(d) ((void)0)
 # define WOODY_PRINT_PROGRAM_HEADER(d) ((void)0)
 #endif
-
-void cleanup(data_t *data) {
-	munmap(data->map, data->size);
-	close(data->fd);
-}
